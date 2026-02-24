@@ -4,6 +4,7 @@ const { Server } = require("socket.io")
 const cors = require("cors")
 
 const { createGame, handleAction } = require("./engine/game")
+const PORT = process.env.PORT || 3000
 
 const app = express()
 app.use(cors())
@@ -40,6 +41,6 @@ io.on("connection", (socket) => {
   })
 })
 
-server.listen(3000, () => {
-  console.log("Servidor activo en puerto 3000")
+server.listen(PORT, () => {
+  console.log("Servidor activo en puerto", PORT)
 })
