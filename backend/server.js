@@ -1,3 +1,7 @@
+console.log("=== BOOT START ===")
+console.log("Node version:", process.version)
+console.log("PORT env:", process.env.PORT)
+
 const express = require("express")
 const http = require("http")
 const { Server } = require("socket.io")
@@ -16,6 +20,11 @@ const io = new Server(server, {
 })
 
 let game = createGame()
+console.log("Game initialized:", game)
+
+app.get("/", (_, res) => {
+  res.send("SERVER_OK")
+})
 
 io.on("connection", (socket) => {
   console.log("Jugador conectado:", socket.id)
